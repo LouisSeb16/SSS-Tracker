@@ -4,12 +4,14 @@ import { cn } from '@/shared/lib/cn';
 
 // React Native text does not inherit styles from a parent View, so every Text needs
 // its own font and color. This component is the one place that decides them.
+// Heavy, tightly spaced headlines and numerals; light, quiet captions.
 const variants = {
-  title: 'font-inter-bold text-3xl tracking-tight text-foreground',
-  heading: 'font-inter-semibold text-xl text-foreground',
-  body: 'font-inter text-base text-foreground',
-  label: 'font-inter-semibold text-sm text-foreground',
-  caption: 'font-inter text-sm text-muted',
+  display: 'font-sans-extrabold text-5xl tracking-tighter text-ink',
+  title: 'font-sans-extrabold text-4xl tracking-tighter text-ink',
+  heading: 'font-sans-bold text-xl tracking-tight text-ink',
+  body: 'font-sans-medium text-base text-ink',
+  label: 'font-sans-semibold text-sm text-ink',
+  caption: 'font-sans text-sm text-muted',
 } as const;
 
 export type TextVariant = keyof typeof variants;

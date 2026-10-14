@@ -1,11 +1,13 @@
+// Inter Tight: a tighter-spaced Inter built for headlines and big numerals.
 // React Native cannot pick a weight from one custom font family: every weight is a
 // separate loaded font file with its own family name. Tailwind classes map to these
-// names (font-inter, font-inter-medium, ...), so never use font-bold with Inter.
+// names (font-sans, font-sans-medium, ...), so never use font-bold with this font.
 const fonts = {
-  regular: 'Inter_400Regular',
-  medium: 'Inter_500Medium',
-  semibold: 'Inter_600SemiBold',
-  bold: 'Inter_700Bold',
+  regular: 'InterTight_400Regular',
+  medium: 'InterTight_500Medium',
+  semibold: 'InterTight_600SemiBold',
+  bold: 'InterTight_700Bold',
+  extrabold: 'InterTight_800ExtraBold',
 };
 
 module.exports = { fonts };

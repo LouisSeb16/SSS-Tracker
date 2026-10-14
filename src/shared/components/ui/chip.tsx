@@ -15,13 +15,13 @@ export function Chip({ label, selected = false, className, ...rest }: Props) {
       accessibilityRole="button"
       accessibilityState={{ selected }}
       className={cn(
-        'min-h-11 items-center justify-center self-start rounded-full border px-4',
-        selected ? 'border-primary bg-primary' : 'border-border bg-background active:bg-surface',
+        'min-h-11 items-center justify-center self-start rounded-full border px-5',
+        selected ? 'border-ink bg-ink' : 'border-line bg-card active:bg-canvas',
         className,
       )}
       {...rest}
     >
-      <Text className={selected ? 'text-primary-foreground' : undefined} variant="label">
+      <Text className={selected ? 'text-white' : undefined} variant="label">
         {label}
       </Text>
     </Pressable>

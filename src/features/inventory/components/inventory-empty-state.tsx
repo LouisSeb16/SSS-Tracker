@@ -9,7 +9,7 @@ export function InventoryEmptyState({ onAddItem }: Props) {
     <EmptyState
       actionLabel="Add your first item"
       description="Add your first item to start tracking stock and sales."
-      icon="package-variant-closed"
+      icon="cube"
       onAction={onAddItem}
       title="Your stockroom is empty"
     />

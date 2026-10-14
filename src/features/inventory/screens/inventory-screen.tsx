@@ -14,13 +14,13 @@ export function InventoryScreen() {
   const addItem = () => undefined;
 
   return (
-    <Screen subtitle="Track what your shop has on hand." title="Inventory">
+    <Screen accent="Stockroom" subtitle="Track what your shop has on hand." title="Inventory">
       <Input
         accessibilityLabel="Search inventory"
         autoCapitalize="none"
         autoCorrect={false}
-        className="mt-6"
-        icon="magnify"
+        containerClassName="mt-6"
+        icon="search"
         onChangeText={setSearchQuery}
         placeholder="Search items"
         value={searchQuery}
@@ -35,7 +35,7 @@ export function InventoryScreen() {
 
       <InventoryEmptyState onAddItem={addItem} />
 
-      <Button className="mb-4" icon="plus" onPress={addItem} title="Add item" />
+      <Button className="mb-4" icon="add" onPress={addItem} title="Add item" variant="dark" />
     </Screen>
   );
 }

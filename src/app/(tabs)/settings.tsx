@@ -1,5 +1,5 @@
 import { SetupPlaceholder } from '@/shared/components/setup-placeholder';
 
 export default function SettingsRoute() {
-  return <SetupPlaceholder title="Settings" />;
+  return <SetupPlaceholder accent="Shop" title="Settings" />;
 }

@@ -6,9 +6,9 @@ import { extendTailwindMerge } from 'tailwind-merge';
 // would not be seen as conflicting.
 const twMerge = extendTailwindMerge({
   extend: {
-    theme: { borderRadius: ['control', 'card'] },
+    theme: { borderRadius: ['inner', 'card'] },
     classGroups: {
-      'font-family': [{ font: ['inter', 'inter-medium', 'inter-semibold', 'inter-bold'] }],
+      'font-family': [{ font: ['sans-medium', 'sans-semibold', 'sans-bold', 'sans-extrabold'] }],
     },
   },
 });

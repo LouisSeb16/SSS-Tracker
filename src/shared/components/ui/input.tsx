@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import type { ComponentProps, Ref } from 'react';
 import { TextInput, View, type TextInputProps } from 'react-native';
 
@@ -11,24 +11,26 @@ type Props = TextInputProps & {
   label?: string;
   /** Inline field error shown under the input. */
   error?: string;
-  icon?: ComponentProps<typeof MaterialCommunityIcons>['name'];
+  icon?: ComponentProps<typeof Ionicons>['name'];
+  /** Classes for the outer wrapper (margins, width). `className` styles the text field. */
+  containerClassName?: string;
   ref?: Ref<TextInput>;
 };
 
-export function Input({ label, error, icon, className, ref, ...rest }: Props) {
+export function Input({ label, error, icon, containerClassName, className, ref, ...rest }: Props) {
   return (
-    <View className="gap-1">
+    <View className={cn('gap-1.5', containerClassName)}>
       {label ? <Text variant="label">{label}</Text> : null}
       <View
         className={cn(
-          'min-h-12 flex-row items-center gap-3 rounded-control border bg-surface px-4',
-          error ? 'border-danger' : 'border-surface',
+          'min-h-14 flex-row items-center gap-3 rounded-inner border bg-card px-4',
+          error ? 'border-danger' : 'border-line',
         )}
       >
-        {icon ? <MaterialCommunityIcons color={colors.muted} name={icon} size={22} /> : null}
+        {icon ? <Ionicons color={colors.muted} name={icon} size={20} /> : null}
         <TextInput
           accessibilityLabel={label}
-          className={cn('flex-1 py-3 font-inter text-base text-foreground', className)}
+          className={cn('flex-1 py-3 font-sans-medium text-base text-ink', className)}
           placeholderTextColor={colors.muted}
           ref={ref}
           {...rest}

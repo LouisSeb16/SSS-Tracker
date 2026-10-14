@@ -10,15 +10,18 @@ module.exports = {
   theme: {
     extend: {
       colors,
+      // Large, soft corners. `card` for outer cards and tiles, `inner` for a card
+      // nested inside another (smaller radius keeps the gap visually even).
       borderRadius: {
-        control: '16px',
-        card: '24px',
+        inner: '20px',
+        card: '28px',
       },
       fontFamily: {
-        inter: [fonts.regular],
-        'inter-medium': [fonts.medium],
-        'inter-semibold': [fonts.semibold],
-        'inter-bold': [fonts.bold],
+        sans: [fonts.regular],
+        'sans-medium': [fonts.medium],
+        'sans-semibold': [fonts.semibold],
+        'sans-bold': [fonts.bold],
+        'sans-extrabold': [fonts.extrabold],
       },
     },
   },

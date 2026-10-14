@@ -1,19 +1,23 @@
 // Single source of truth for the palette. CommonJS on purpose: tailwind.config.js
-// (plain Node) and TypeScript code (icon and placeholder colors, which cannot take a
-// className) both import this file.
+// (plain Node) and TypeScript code (icon colors, which cannot take a className) both
+// import this file.
 //
-// Neutrals follow the Expo template palette. The blue and the red are darkened so
-// white text on them passes WCAG AA (4.5:1): primary 4.83:1, danger 5.21:1.
+// Warm cream canvas, near-black ink, one vivid cyan accent and charcoal panels.
+// Contrast (WCAG): ink on canvas 16.4, ink on accent 6.3, white on panel 9.2,
+// muted on canvas 4.7, muted on card 5.4, panel-muted on panel 4.6, danger on canvas 4.8,
+// accent-text on canvas 4.9. White on the bright accent is only 3.0, so text on accent
+// fills is always ink, and `accent` is for fills and large numerals, never small text.
 const colors = {
-  background: '#FFFFFF',
-  foreground: '#000000',
-  surface: '#F0F0F3',
-  'surface-pressed': '#E0E1E6',
-  border: '#E0E1E6',
-  muted: '#60646C',
-  primary: '#2B6BE6',
-  'primary-foreground': '#FFFFFF',
-  danger: '#CE2C31',
+  canvas: '#F2EFE6',
+  card: '#FFFFFF',
+  ink: '#111111',
+  muted: '#6B6A63',
+  line: '#DDD9CC',
+  accent: '#009FDB',
+  'accent-text': '#006F9E',
+  panel: '#484848',
+  'panel-muted': '#B8B8B8',
+  danger: '#C9252C',
 };
 
 module.exports = { colors };
