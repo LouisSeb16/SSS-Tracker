@@ -1,61 +1,41 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from 'react';
-import { Pressable, Text, TextInput, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { InventoryEmptyState } from '@/features/inventory/components/inventory-empty-state';
+import { Button } from '@/shared/components/ui/button';
+import { Chip } from '@/shared/components/ui/chip';
+import { Input } from '@/shared/components/ui/input';
+import { Screen } from '@/shared/components/ui/screen';
 
 export function InventoryScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showLowStockOnly, setShowLowStockOnly] = useState(false);
 
+  // Placeholder until the item form exists (Phase 3).
+  const addItem = () => undefined;
+
   return (
-    <SafeAreaView className="flex-1 bg-background" edges={['top', 'left', 'right']}>
-      <View className="flex-1 px-5 pt-4">
-        <Text className="text-3xl font-bold tracking-tight text-foreground">Inventory</Text>
-        <Text className="mt-1 text-base text-muted">Track what your shop has on hand.</Text>
+    <Screen accent="Stockroom" subtitle="Track what your shop has on hand." title="Inventory">
+      <Input
+        accessibilityLabel="Search inventory"
+        autoCapitalize="none"
+        autoCorrect={false}
+        containerClassName="mt-6"
+        icon="search"
+        onChangeText={setSearchQuery}
+        placeholder="Search items"
+        value={searchQuery}
+      />
 
-        <View className="mt-6 h-12 flex-row items-center rounded-full bg-surface px-4">
-          <MaterialCommunityIcons color="#536471" name="magnify" size={22} />
-          <TextInput
-            accessibilityLabel="Search inventory"
-            autoCapitalize="none"
-            autoCorrect={false}
-            className="ml-3 flex-1 text-base text-foreground"
-            onChangeText={setSearchQuery}
-            placeholder="Search items"
-            placeholderTextColor="#536471"
-            value={searchQuery}
-          />
-        </View>
+      <Chip
+        className="mt-3"
+        label="Low stock"
+        onPress={() => setShowLowStockOnly((current) => !current)}
+        selected={showLowStockOnly}
+      />
 
-        <Pressable
-          accessibilityRole="button"
-          accessibilityState={{ selected: showLowStockOnly }}
-          className={`mt-3 min-h-11 justify-center self-start rounded-full border px-4 ${
-            showLowStockOnly ? 'border-primary bg-primary' : 'border-border bg-background'
-          }`}
-          onPress={() => setShowLowStockOnly((current) => !current)}
-        >
-          <Text
-            className={`text-sm font-semibold ${showLowStockOnly ? 'text-white' : 'text-foreground'}`}
-          >
-            Low stock
-          </Text>
-        </Pressable>
+      <InventoryEmptyState onAddItem={addItem} />
 
-        <InventoryEmptyState />
-
-        <Pressable
-          accessibilityLabel="Add item"
-          accessibilityRole="button"
-          className="mb-4 min-h-12 flex-row items-center justify-center rounded-full bg-primary px-5"
-          onPress={() => undefined}
-        >
-          <MaterialCommunityIcons color="#FFFFFF" name="plus" size={20} />
-          <Text className="ml-2 text-base font-bold text-white">Add item</Text>
-        </Pressable>
-      </View>
-    </SafeAreaView>
+      <Button className="mb-4" icon="add" onPress={addItem} title="Add item" variant="dark" />
+    </Screen>
   );
 }

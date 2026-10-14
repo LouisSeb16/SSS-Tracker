@@ -1,51 +1,25 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { TabList, TabSlot, TabTrigger, Tabs } from 'expo-router/ui';
+
+import { FloatingTabBar, type TabItem } from '@/shared/components/navigation/floating-tab-bar';
+
+const TABS: (TabItem & { href: '/' | '/sell' | '/summary' | '/settings' })[] = [
+  { name: 'index', href: '/', label: 'Inventory', icon: 'cube' },
+  { name: 'sell', href: '/sell', label: 'Sell', icon: 'cart' },
+  { name: 'summary', href: '/summary', label: 'Summary', icon: 'stats-chart' },
+  { name: 'settings', href: '/settings', label: 'Settings', icon: 'settings' },
+];
 
 export default function TabsLayout() {
   return (
-    <Tabs
-      screenOptions={{
-        headerShown: false,
-        tabBarActiveTintColor: '#1D9BF0',
-        tabBarInactiveTintColor: '#536471',
-      }}
-    >
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Inventory',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons color={color} name="package-variant-closed" size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="sell"
-        options={{
-          title: 'Sell',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons color={color} name="cart-outline" size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="summary"
-        options={{
-          title: 'Summary',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons color={color} name="chart-bar" size={size} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="settings"
-        options={{
-          title: 'Settings',
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons color={color} name="cog-outline" size={size} />
-          ),
-        }}
-      />
+    <Tabs>
+      <TabSlot />
+      <FloatingTabBar items={TABS} />
+      {/* Hidden list: it defines which routes exist. The visible bar is FloatingTabBar. */}
+      <TabList style={{ display: 'none' }}>
+        {TABS.map((tab) => (
+          <TabTrigger href={tab.href} key={tab.name} name={tab.name} />
+        ))}
+      </TabList>
     </Tabs>
   );
 }
